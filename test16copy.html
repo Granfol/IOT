@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nadzor LED</title>
+</head>
+<body>
+<h1>Uporabniški vmesnik za nadzor LED diod</h1>
+<button onclick="sendData(2, 1)">LED 1 ON</button>
+<button onclick="sendData(2, 0)">LED 1 OFF</button>
+<br><br>
+<button onclick="sendData(5, 4)">LED 2 ON</button>
+<button onclick="sendData(5, 5)">LED 2 OFF</button>
+<br><br>
+<button onclick="sendData(23, 8)">LED 3 ON</button>
+<button onclick="sendData(23, 9)">LED 3 OFF</button>
+<br><br>
+<button onclick="sendData(22, 6)">LED 4 ON</button>
+<button onclick="sendData(22, 7)">LED 4 OFF</button>
+<br><br>
+<button onclick="sendData(4, 2)">LED 5 ON</button>
+<button onclick="sendData(4, 3)">LED 5 OFF</button>
+<br><br>
+<button onclick="sendData(23,8 ), sendData(5, 4)">VKLOPI obe LED na modulu 1</button>
+<button onclick="sendData(23, 9), sendData(5, 5)">IZKLOPI obe LED na modulu 1</button>
+<br><br>
+<button onclick="sendData(22,6 ), sendData(4, 2)">VKLOPI obe LED na modulu 2</button>
+<button onclick="sendData(22, 7), sendData(4, 3)">IZKLOPI obe LED na modulu 2</button>
+<br><br>
+<button onclick="sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2)">VKLOPI vse LED</button>
+<button onclick="sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">IZKLOPI vse LED</button>
+<br><br>
+<button onclick="sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2),sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">VKLOPI/IZKLOPI SEKVENCO</button>
+<script>
+var websocket = new WebSocket("ws://192.168.115.195:8888");
+function sendData(pin, value) {
+  var data = {"tipSporočila": "LED", "vrednost": value, "pin": pin};
+  websocket.send(JSON.stringify(data));
+}
+</script>
+</body>
+</html>
