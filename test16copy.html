@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nadzor LED</title>
 </head>
 <body>
+<style>
+  h1{
+color: black;
+font-size: 16px;
+font-family: Verdana, Geneva, Tahoma, sans-serif; 
+
+  }
+button {
+  color: rgb(0, 0, 0);
+  border-radius: 25px;
+  background: #aadb66;
+  width: 150px;
+  height: 50px
+
+}
+</style>
 <h1>Uporabniški vmesnik za nadzor LED diod</h1>
+<br>
+<br>
 <button onclick="sendData(2, 1)">LED 1 ON</button>
 <button onclick="sendData(2, 0)">LED 1 OFF</button>
 <br><br>
@@ -26,10 +45,11 @@
 <button onclick="sendData(22,6 ), sendData(4, 2)">VKLOPI obe LED na modulu 2</button>
 <button onclick="sendData(22, 7), sendData(4, 3)">IZKLOPI obe LED na modulu 2</button>
 <br><br>
-<button onclick="sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2)">VKLOPI vse LED</button>
-<button onclick="sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">IZKLOPI vse LED</button>
+<button onclick="sendData(2, 1),sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2)">VKLOPI vse LED</button>
+<button onclick="sendData(2, 0),sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">IZKLOPI vse LED</button>
 <br><br>
-<button onclick="sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2),sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">VKLOPI/IZKLOPI SEKVENCO</button>
+<button onclick="sendData(23,8 ), sendData(5, 4), sendData(22,6 ), sendData(4, 2),/n/
+sendData(23, 9), sendData(5, 5), sendData(22, 7), sendData(4, 3)">VKLOPI/IZKLOPI SEKVENCO</button>
 <script>
 var websocket = new WebSocket("ws://192.168.115.195:8888");
 function sendData(pin, value) {
